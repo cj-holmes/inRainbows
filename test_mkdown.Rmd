@@ -1,0 +1,15 @@
+---
+title: "Test markdown"
+author: "Chris Holmes"
+date: "1 April 2018"
+output: html_document
+---
+
+This is a test markdown
+
+
+```{r}
+x <- seq(-2*pi, 2*pi, l=1000)
+plot(x, sin(x))
+
+```
