@@ -1,0 +1,138 @@
+---
+title: "inRainbows"
+subtitle: "kmeans colour palette selection"
+author: "Chris Holmes"
+date: "1 April 2018"
+output:
+  html_document:
+    df_print: kable
+    toc: true
+    toc_float: true
+    theme: lumen
+    highlight: textmate
+editor_options: 
+  chunk_output_type: console
+---
+# Introduction
+InRainbows colour palettes ...ya da ya da
+
+## Required packages
+```{r, warning=F, message=F}
+library(tidyverse)
+library(jpeg)
+library(reshape2)
+```
+
+# kMeans colour space
+Define function to transform an image into tidy coordinate pairs with RGB values.
+```{r}
+imTransform <- function(img){
+  
+  i <- readJPEG(img)
+  
+  dim_x <- dim(i)[1]
+  dim_y <- dim(i)[2]
+  
+  df <-
+    melt(i) %>% 
+    spread(Var3, value) %>% 
+    rename(red="1", green="2", blue="3") %>% 
+    mutate(Var1 = -Var1 + dim_y) %>% 
+    rename(x=Var2, y=Var1) %>% 
+    mutate(hex = pmap_chr(list(red, green, blue), rgb))
+  
+  df
+}
+```
+
+# Read in an album cover
+```{r}
+im_df <- imTransform("album_covers/the_bends.jpg")
+head(im_df)
+```
+
+## Run kmeans
+```{r}
+ncols <- 5 # Number of palette colors
+kMeans <- kmeans(im_df[c("red", "green", "blue")], ncols)
+```
+
+Assign mean colours to all coordinate pairs
+```{r}
+approxCol <- kMeans$centers[kMeans$cluster, ]
+```
+
+## Visualise palette
+```{r fig.align="center", fig.width=8, fig.height=3}
+par(mfrow=c(1,3))
+plot(im_df$x, im_df$y, col=rgb(im_df[,3:5]), 
+     asp = 1, pch=".", axes=F, xlab="", ylab="", main="Original")
+
+plot(im_df$x, im_df$y, col=rgb(approxCol), 
+     asp = 1, pch=".", axes=F, xlab="", ylab="", main="Approximate")
+
+palette <- table(rgb(approxCol)) %>% sort(decreasing = T)
+barplot(palette, col=names(palette), axes=F, border=NA, main="Palette", las=2)
+```
+
+## Wrap all into one function
+```{r}
+imPalette <- function(img, ncol=5, my.seed=3, ...){  
+  
+  i <- readJPEG(img)
+  mname <- str_extract(img, "(?<=/)[^.]+")
+  
+  dim_x <- dim(i)[1]
+  dim_y <- dim(i)[2]
+  
+  df <-
+    melt(i) %>% 
+    spread(Var3, value) %>% 
+    rename(red="1", green="2", blue="3") %>% 
+    mutate(Var1 = -Var1 + dim_y) %>% 
+    rename(x=Var2, y=Var1) %>% 
+    tbl_df()
+  
+  df$hex <- df %>% select(red, green, blue) %>% pmap_chr(rgb)
+  
+  # Run Kmeans 
+  set.seed(my.seed)
+  kMeans <- kmeans(df[c("red", "green", "blue")], ncol, ...)
+  
+  # Caluclate aproximate colours
+  approxCol <- kMeans$centers[kMeans$cluster, ]
+  
+  # Plot
+  par(mfrow=c(1,3))
+  plot(df$x, df$y, col=rgb(df[,3:5]), 
+       asp = 1, pch=".", axes=F, xlab="", ylab="", main="Original")
+  
+  plot(df$x, df$y, col=rgb(approxCol), 
+       asp = 1, pch=".", axes=F, xlab="", ylab="", main="Approximate")
+  
+  palette <- table(rgb(approxCol)) %>% sort(decreasing = T)
+  barplot(palette, col=names(palette), axes=F, border=NA, main="Palette", las=2)
+  
+  return(assign(x=mname, value = palette, envir = .GlobalEnv))
+  }
+```
+
+## Run on all album covers
+```{r fig.align="center", fig.width=8, fig.height=3}
+paste0("album_covers/",list.files("album_covers")) %>% 
+  sapply(imPalette, ncol=10) %>% 
+  invisible()
+```
+
+```{r}
+pPal <- function(hex) barplot(rep(1, length(hex)), col=hex, border=NA, axes=F)
+pablo_honey[c(1,2,5,6,9,10)] %>% names() %>% pPal()
+the_bends[c(1,2,5,6)] %>% names() %>% pPal()
+ok_computer[c(1,3,7,9,10)] %>% names() %>% pPal()
+kid_a[c(1,2,6,8,10)] %>% names() %>% pPal()
+amnesiac[c(1,2,10)] %>% names() %>% pPal()
+httf[c(1,2,5,6,8,9,10)] %>% names() %>% pPal()
+in_rainbows[c(1,2,5,6,7,9,10)] %>% names() %>% pPal()
+king_of_limbs[c(1,2,4,5,7,8,10)] %>% names() %>% pPal()
+```
+
