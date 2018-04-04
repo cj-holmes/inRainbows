@@ -85,7 +85,6 @@ imj <-
   imj %>% 
   mutate(av_colour = pmap_chr(list(xleft, ybottom, xright, ytop), avCol))
 
-
 # Plot image and selections
 par(mfrow=c(1,4), mar=c(1,1,2,1))
 plot(df$x, df$y, col=df$hex, pch=".", asp=1, axes=F, xlab="", ylab="", main="Original")
