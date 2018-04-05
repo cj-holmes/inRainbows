@@ -11,7 +11,10 @@ I'm using this project as both an opportuity to learn how to use GitHub whilst s
 * make manual selections in imageJ and then calculate average colours in R
 * I'm not sure how useful the dark (almost black) colours are...
 
+## Palettes
+Example palettes from the manual selection process
 ![Example](palettes.png)
 
+## Example plots
 Some example plots...here the black in the KID A palette hides the median bar :(
 ![Example](example_plots.png)
