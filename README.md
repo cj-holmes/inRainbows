@@ -5,9 +5,12 @@ I thought i'd like to have a go at producing some R colour palettes based on Rad
 
 I'm using this project as both an opportuity to learn how to use GitHub whilst simultaneously learning about colour spaces and their implementation in R.
 
-![Example kmeans derived palette](kmeans_palette_creation_files/figure-html/unnamed-chunk-6-1.png)
-
-This project is massively an active work in progress. Two main approaches so far...
+So far, this is massively a work in progress. Two main approaches so far...
 
 * using Kmeans to make colour palettes unsupervised
 * make manual selections in imageJ and then calculate average colours in R
+
+![Example](palettes.png)
+
+
+![Example](example_plots.png)
