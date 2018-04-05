@@ -5,12 +5,13 @@ I thought i'd like to have a go at producing some R colour palettes based on Rad
 
 I'm using this project as both an opportuity to learn how to use GitHub whilst simultaneously learning about colour spaces and their implementation in R.
 
-So far, this is massively a work in progress. Two main approaches so far...
+**This is massively a work in progress** Two main approaches so far...
 
 * using Kmeans to make colour palettes unsupervised
 * make manual selections in imageJ and then calculate average colours in R
+* I'm not sure how useful the dark (almost black) colours are...
 
 ![Example](palettes.png)
 
-
+Some example plots...here the black in the KID A palette hides the median bar :(
 ![Example](example_plots.png)
