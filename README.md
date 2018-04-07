@@ -8,9 +8,10 @@ I'm using this project as both an opportuity to learn how to use GitHub whilst s
 **This is massively a work in progress** with two main approaches so far...
 
 * using Kmeans to make colour palettes in an unsupervised manner
-    * ![kmeans example](example_kmeans_palette.png)
+![kmeans example](example_kmeans_palette.png)
+
 * using manual selections in imageJ and then calculate average colours in R
-    * ![manual example](example_manual_palette.png)
+![manual example](example_manual_palette.png)
 
 ## Palettes
 Example palettes from the manual selection process
