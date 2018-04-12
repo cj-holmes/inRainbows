@@ -15,3 +15,5 @@ Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
+URL: https://github.com/dickie-roper/inRainbows
+BugReports: https://github.com/dickie-roper/inRainbows/issues
