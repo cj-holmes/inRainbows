@@ -19,7 +19,7 @@
 #' @examples
 #' hist(1:8,col =inRainbows_palette("ok_computer")(4), main = "ok_computer")
 #' hist(1:14,col =inRainbows_palette("httf")(7), main = "httf")
-inRainbows_palette <- function(album){
+inRainbows_palette <- function(option){
 
   rpals <- list(
     pablo_honey = c("#E7CC4A", "#100604", "#E3E7DE", "#1F0155"),
@@ -36,9 +36,9 @@ inRainbows_palette <- function(album){
   return(
     function(n){
 
-      if(length(rpals[[album]]) < n) stop("not enough colours in palette")
+      if(length(rpals[[option]]) < n) stop("not enough colours in palette")
 
-      rpals[[album]][1:n]
+      rpals[[option]][1:n]
     }
   )
 
