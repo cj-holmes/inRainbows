@@ -13,7 +13,8 @@ Imports: ggplot2,
     gridExtra
 Suggests: knitr,
     rmarkdown,
-    tidyverse
+    tidyverse,
+    jpeg
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
 URL: https://github.com/dickie-roper/inRainbows
