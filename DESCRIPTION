@@ -12,7 +12,8 @@ LazyData: true
 Imports: ggplot2,
     gridExtra
 Suggests: knitr,
-    rmarkdown
+    rmarkdown,
+    tidyverse
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
 URL: https://github.com/dickie-roper/inRainbows
