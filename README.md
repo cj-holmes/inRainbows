@@ -3,7 +3,7 @@
 inRainbows
 ==========
 
-[![Travis-CI Build Status](https://travis-ci.org/tjconstant/inRainbows.svg?branch=master)](https://travis-ci.org/tjconstant/inRainbows)
+[![Travis-CI Build Status](https://travis-ci.org/dickie-roper/inRainbows.svg?branch=master)](https://travis-ci.org/dickie-roper/inRainbows)
 
 Radiohead album colour palettes.
 
