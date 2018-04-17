@@ -3,7 +3,7 @@ Title: Radiohead Album Colour Scales
 Version: 0.0.0.9000
 Authors@R: c(
   person("Chris", "Holmes", email = "c.holmes4@gmail.com", role = c("aut", "cre")),
-  person("Tom", "Constant", email = "t.j.constant@gmail.com", role = c("aut", "ctb"))
+  person("Tom", "Constant", email = "t.j.constant@gmail.com", role = c("aut", "ctb")))
 Description: Colour scales from Radiohead albums
 Depends: R (>= 3.4.3)
 License: What license is it under?
