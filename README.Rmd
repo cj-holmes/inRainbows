@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-An attempt at producing R colour palettes based on Radiohead album artwork.
+An attempt at producing R colour palettes based on Radiohead album artwork. This project is a **work in progress** and may not work as expected!
 
 ## Palette creation
 The colour palettes are produced by first running kmeans on the RGB coordinates of the album covers with a specification that 20 groups are returned (the value of 20 groups was picked after some trial and error, as lower group numbers would sometimes result in key colours or accent colours in the album cover not being picked out).

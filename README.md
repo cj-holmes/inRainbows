@@ -8,7 +8,8 @@
 <!-- badges: end -->
 
 An attempt at producing R colour palettes based on Radiohead album
-artwork.
+artwork. This project is a **work in progress** and may not work as
+expected\!
 
 ## Palette creation
 
